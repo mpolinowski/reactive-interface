@@ -1,0 +1,46 @@
+[{
+    "modelNo": "IN-3011",
+    "camType": "Indoor Pan&Tilt IP Camera",
+    "stockLeft": "11",
+    "modelNotes": "VGA Resolution, 6mm Lense"
+}, {
+    "modelNo": "IN-6012HD",
+    "camType": "Indoor Pan&Tilt IP Camera",
+    "stockLeft": "224",
+    "modelNotes": "HD Resolution, 8mm Lense"
+}, {
+    "modelNo": "IN-6014HD",
+    "camType": "Indoor Pan&Tilt IP Camera",
+    "stockLeft": "201",
+    "modelNotes": "HD Resolution, 4.2mm Lense"
+}, {
+    "modelNo": "IN-8015HD",
+    "camType": "Indoor Pan&Tilt IP Camera",
+    "stockLeft": "1",
+    "modelNotes": "fullHD Resolution, 4.2mm Lense"
+}, {
+    "modelNo": "IN-2905",
+    "camType": "Outdoor Bullet IP Camera",
+    "stockLeft": "12",
+    "modelNotes": "VGA Resolution, 6mm Lense"
+}, {
+    "modelNo": "IN-5905HD",
+    "camType": "Outdoor Bullet IP Camera",
+    "stockLeft": "45",
+    "modelNotes": "HD Resolution, 4mm Lense"
+}, {
+    "modelNo": "IN-5907HD",
+    "camType": "Outdoor Bullet IP Camera",
+    "stockLeft": "204",
+    "modelNotes": "HD Resolution, 8mm Lense"
+}, {
+    "modelNo": "IN-7011HD",
+    "camType": "Outdoor Pan&Tilt IP Camera",
+    "stockLeft": "445",
+    "modelNotes": "HD Resolution, 6mm Lense"
+}, {
+    "modelNo": "IN-9008HD",
+    "camType": "Outdoor Bullet IP Camera",
+    "stockLeft": "1",
+    "modelNotes": "fullHD Resolution, 4.2mm Lense"
+}]
