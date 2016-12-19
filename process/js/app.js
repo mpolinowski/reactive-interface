@@ -1,12 +1,17 @@
 var React = require ('react');
 var ReactDOM = require ('react-dom');
+var _ = require('lodash');
+
+var ProductList = require('./ProductList');
+var AddProduct = require('./AddProduct');
 
 var MainInterface = React.createClass({
   getInitialState: function() {
     return {
+      productBodyVisible: false,
       instarProducts: [],
     }
-  }, // GetInitialState
+  }, // GetInitialState - Add Product Panel is hidden / instarProducts are loaded with (below)
 
   componentDidMount: function() {
     this.serverRequest = $.get('./js/data.json', function(result) {
@@ -15,41 +20,60 @@ var MainInterface = React.createClass({
         instarProducts: tempProducts,
       }); // SetState
     }.bind(this));
-  },
+  }, // Get model data from base
 
   componentWillUnmount: function() {
     this.serverRequest.abort();
+  }, // Abort database connection
+
+  deleteMessage: function(item) {
+    var allProducts = this.state.instarProducts;
+    var newProducts = _.without(allProducts, item);
+    this.setState({
+      instarProducts: newProducts,
+    }); // SetState onClick -> handleDelete for whichItem from Subcomponent ProductList.js
+  }, // Use lodash to delete product from array and return new array
+
+  toggleAddDisplay: function() {
+    var tempVisibility = !this.state.productBodyVisible;
+    this.setState({
+      productBodyVisible: tempVisibility,
+    }); // Click on addPanel Heading to change visibility of panel body to opposite of current state
   },
+
+  addItem: function(tempItem) {
+    newProducts = this.state.instarProducts;
+    newProducts.push(tempItem);
+    this.setState({
+      instarProducts: newProducts,
+    }); // SetState
+  }, // AddItem from tempItem in subcomponent AddProduct.js
 
   render: function() {
     var filteredProducts = this.state.instarProducts;
     filteredProducts = filteredProducts.map(function(item, index) {
       return (
-        <li className='product-item media' key={index}>
-          <div className='product-info media-body'>
-            <div className='product-head'>
-              <span className='product-name'>{ this.state.instarProducts[index].modelNo }</span>
-              <span className='stock-left pull-right'>Stock: { this.state.instarProducts[index].stockLeft }</span>
-            </div>
-            <div className='cam-type'>
-              <span className='label-item'>Type: </span>{ this.state.instarProducts[index].camType }
-            </div>
-            <div className='model-notes'>
-              <span className='label-item'>Notes: </span>{ this.state.instarProducts[index].modelNotes }
-            </div>
-          </div>
-        </li>
+        <ProductList key = { index }
+          singleItem = { item }
+          whichItem = { item }
+          onDelete = { this.deleteMessage } />
       ) // Return
-    }.bind(this)); // FilteredProducts
+    }.bind(this)); // FilteredProducts -> see ProductList.js Subcomponent
 
     return (
       <div className='interface'>
+          <AddProduct
+            bodyVisible = { this.state.productBodyVisible }
+            handleToggle = { this.toggleAddDisplay }
+            addProductSubmit = { this.addItem }
+           />
           <ul className='item-list media-list'>{filteredProducts}</ul>
       </div>
-    ) // Return
+    ) // Return FilteredProducts in List
 
   }, // Render
 }); // MainInterface
+
 
 ReactDOM.render(
   <MainInterface />,

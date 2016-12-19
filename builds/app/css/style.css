@@ -145,3 +145,9 @@ footer .navbar-nav>li a {
 .item-list .model-notes {
 
 }
+
+.add-panel {
+  margin: 0;
+  padding: 0;
+  margin: 15px 7% 50px 5%;
+}
