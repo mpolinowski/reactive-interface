@@ -36,7 +36,7 @@ gulp.task('webserver', function() {
     .pipe(webserver({
         port: 3000,
         livereload: true,
-        open: true,
+        // Open: true,
       }));
 });
 

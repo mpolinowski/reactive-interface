@@ -12,7 +12,7 @@ var AddProduct = React.createClass({
       stockLeft: this.refs.inputStockLeft.value,
       camType: this.refs.inputCamType.value,
       modelNotes: this.refs.inputModelNotes.value,
-    } // TempItem
+    } // Create TempItem from REFs used in the form element
     e.preventDefault();
     this.props.addSubmit(tempItem);
   }, // HandleAdd: Prevent default sending / reloading behaviour of submit button and send tempItem to main component
