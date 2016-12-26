@@ -34,6 +34,7 @@ gulp.task('watch', function() {
 gulp.task('webserver', function() {
   gulp.src(app + '/')
     .pipe(webserver({
+        port: 3000,
         livereload: true,
         open: true,
       }));

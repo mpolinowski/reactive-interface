@@ -11,7 +11,7 @@ var MainInterface = React.createClass({
       productBodyVisible: false,
       instarProducts: [],
     }
-  }, // GetInitialState - Add Product Panel is hidden / instarProducts are loaded with (below)
+  }, // GetInitialState - Add Product Panel is hidden / instarProducts are loaded from (see below)
 
   componentDidMount: function() {
     this.serverRequest = $.get('./js/data.json', function(result) {
@@ -31,21 +31,21 @@ var MainInterface = React.createClass({
     var newProducts = _.without(allProducts, item);
     this.setState({
       instarProducts: newProducts,
-    }); // SetState onClick -> handleDelete for whichItem from Subcomponent ProductList.js
+    }); // SetState onClick -> handleDelete for which Item from Subcomponent ProductList.js
   }, // Use lodash to delete product from array and return new array
 
   toggleAddDisplay: function() {
     var tempVisibility = !this.state.productBodyVisible;
     this.setState({
       productBodyVisible: tempVisibility,
-    }); // Click on addPanel Heading to change visibility of panel body to opposite of current state
-  },
+    }); // Set state to opposite of current state - visible / hidden
+  }, // Click on addPanel Heading to change visibility of panel body
 
   addItem: function(tempItem) {
-    newProducts = this.state.instarProducts;
-    newProducts.push(tempItem);
+    var tempProducts = this.state.instarProducts;
+    tempProducts.push(tempItem);
     this.setState({
-      instarProducts: newProducts,
+      instarProducts: tempProducts,
     }); // SetState
   }, // AddItem from tempItem in subcomponent AddProduct.js
 
@@ -65,7 +65,7 @@ var MainInterface = React.createClass({
           <AddProduct
             bodyVisible = { this.state.productBodyVisible }
             handleToggle = { this.toggleAddDisplay }
-            addProductSubmit = { this.addItem }
+            addSubmit = { this.addItem }
            />
           <ul className='item-list media-list'>{filteredProducts}</ul>
       </div>
